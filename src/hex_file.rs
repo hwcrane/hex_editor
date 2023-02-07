@@ -1,7 +1,5 @@
 use crate::byte::Byte;
 
-use colored::Colorize;
-
 use std::fs::File;
 use std::io;
 use std::io::prelude::*;
@@ -9,6 +7,7 @@ use std::io::prelude::*;
 pub struct HexFile {
     filepath: String,
     data: Vec<Byte>,
+    pub length: usize,
 }
 
 impl HexFile {
@@ -18,8 +17,9 @@ impl HexFile {
 
         f.read_to_end(&mut buffer)?;
         let data: Vec<Byte> = buffer.iter().map(|b| Byte::new(*b)).collect();
+        let length = data.len();
 
-        Ok(HexFile { filepath, data })
+        Ok(HexFile { filepath, data , length})
     }
 
     pub fn get_data(&self) -> &Vec<Byte> {

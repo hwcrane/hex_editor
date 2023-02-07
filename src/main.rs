@@ -20,7 +20,8 @@ fn main() -> Result<()> {
     enable_raw_mode()?;
     execute!(stdout, EnterAlternateScreen)?;
 
-    hex_editor::run("small.png".to_string())?;
+    // hex_editor::run("small.png".to_string())?;
+    hex_editor::run("IMG_2450.PNG".to_string())?;
 
     execute!(stdout, LeaveAlternateScreen)?;
     disable_raw_mode()?;
